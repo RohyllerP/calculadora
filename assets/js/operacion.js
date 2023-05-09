@@ -37,11 +37,10 @@ delet.onclick = function(){
     }
 }
 // 
-var conComa = 0;
+
 coma.onclick = function(){
     if(valNumber == 0 && valOpera == "" && valNumberAux == 0){
         valNumber += ".";
-        conComa = new Decimal(valNumber);
         result.innerHTML = valNumber;
         return true;
     }
@@ -65,13 +64,13 @@ for (var i = 0; i < divNumb.length; i++) {
     divNumb[i].addEventListener("click", function () {
         let h = this.firstChild.innerHTML;
         if (valOpera == "") {
-            if (valNumber == 0) {
+            if (valNumber == 0 && valNumber != "0.") {
                 valNumber = h;
             } else {
                 valNumber += h;
             }
-            if(conComa != 0){
-                valNumber = Number(conComa + h);
+            if(valNumber == "0."){
+                valNumber += h;
             }
             result.innerText = valNumber;
         } else {
