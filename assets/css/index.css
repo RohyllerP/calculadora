@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switch input:checked + .slider {
+  background-color: #2196F3;
+}
+.switch input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.switch .round {
+  border-radius: 34px;
+}
+.switch .round:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+.switch .round:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+}
+
+h4 {
+  font-size: 25px;
+}
+
+.body-light {
+  background-color: #FFFFFF;
+}
+
+.body-dark {
+  background-color: #212A3E;
+}
+
+.color-light {
+  color: #FFFFFF;
+}
+
+.h4-dark {
+  color: #3E3E3E;
+}
+
+.h4-light {
+  color: #FFFFFF;
+}
+
+.color-dark {
+  color: black;
+}
+
+.header {
+  margin-top: 20px;
+  padding: 10px 30px 10px 30px;
+}
+.header .header-div {
+  display: flex;
+  align-items: center;
+}
+.header .header-div span {
+  font-size: 18px;
+  font-weight: 500;
+  padding-left: 20px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  row-gap: 20px;
+  column-gap: 50px;
+  margin-right: 0px;
+  padding: 1em 30px 0px 30px;
+}
+.main #table {
+  margin-top: 17px;
+  border: 1px solid #3E3E3E;
+  border-radius: 20px;
+}
+.main #table .table-result {
+  padding: 20px 20px;
+  background-color: #373737;
+  -webkit-border-top-left-radius: 20px;
+  -webkit-border-top-right-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -moz-border-radius-topright: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align: end;
+}
+.main #table .table-result p {
+  font-size: 27px;
+  color: white;
+}
+.main .table-body .table-flex {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+.main .table-body .table-flex .table-div {
+  border-right: 0.5px solid #3E3E3E;
+  border-bottom: 2px solid #3E3E3E;
+  border-left: 0.5px solid #3E3E3E;
+  padding: 20px;
+  cursor: pointer;
+}
+.main .table-body .table-flex .table-div .table-p {
+  text-align: center;
+  font-size: 20px;
+}
+.main .table-body .table-flex #div-17 {
+  border-bottom-left-radius: 17px;
+}
+.main .table-body .table-flex #div-20 {
+  border-bottom-right-radius: 17px;
+}
+.main #div-historial {
+  background-color: #3E3E3E;
+  min-height: 89%;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+.main #div-historial .historial-hijo {
+  padding: 20px 0px;
+}
+.main #div-historial .historial-hijo p {
+  color: #FFFFFF;
+  padding-left: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#div-3 > p {
+  margin-top: -5px;
+  font-size: 26px;
+}
+
+#div-20 > p {
+  font-size: 25px;
+}
+
+/*# sourceMappingURL=index.css.map */

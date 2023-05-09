@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora creada con HTML SASS JAVASCRIPT" />
+    <meta property="og:title" content="Calculadora moderna">
+    <meta property="og:description" content="Calculadora creada con HTML SASS Y JAVASCRIPT PURO">
+    <meta property="og:image" content="https://example.com/assets/img/portada.png">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="icon" type="image/png" href="assets/img/calculadora.png">
+    <title>Calculadora</title>
+</head>
+
+<body id="body">
+    <header class="header">
+        <div class="header-div">
+            <label class="switch">
+                <input id="switch" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <span id="modo-span">Modo claro</span>
+        </div>
+    </header>
+    <main class="main">
+        <div>
+            <h4 id="calcu-h4" class="h4-dark">Calculadora</h4>
+            <div id="table">
+                <div class="table-result">
+                    <p id="id-result">0</p>
+                </div>
+                <div class="table-body">
+                    <div class="table-flex">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h4 id="histo-h4" class="h4-dark">Historial</h4>
+            <div id="div-historial">
+
+            </div>
+        </div>
+    </main>
+    <script src="assets/js/switch.js"></script>
+    <script src="assets/js/table.js"></script>
+    <script src="assets/js/decimal.js"></script>
+    <script src="assets/js/operacion.js"></script>
+</body>
+
+</html>
