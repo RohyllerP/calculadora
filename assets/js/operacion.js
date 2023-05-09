@@ -41,7 +41,7 @@ var conComa = 0;
 coma.onclick = function(){
     if(valNumber == 0 && valOpera == "" && valNumberAux == 0){
         valNumber += ".";
-        conComa = valNumber;
+        conComa = new Decimal(valNumber);
         result.innerHTML = valNumber;
         return true;
     }
@@ -71,7 +71,7 @@ for (var i = 0; i < divNumb.length; i++) {
                 valNumber += h;
             }
             if(conComa != 0){
-                valNumber = conComa + h;
+                valNumber = Number(conComa + h);
             }
             result.innerText = valNumber;
         } else {
@@ -130,17 +130,19 @@ function operar() {
                     result.innerText = cal;
                 }else{
                     cal = (new Decimal(valNumber) / new Decimal(valNumberAux));
-                    result.innerText = cal.toFixed(2);
+                    cal = Number(cal.toFixed(9));
+                    result.innerText = Number(cal.toFixed(9));
                 }
                 break;
             case 'X':
                 if(valNumber - Math.floor(valNumber) == 0){
                     cal = (Number(valNumber) * Number(valNumberAux));
+                    result.innerText = cal;
                 }else{
-                    let auxNum = (new Decimal(valNumber) * new Decimal(valNumberAux));
-                    cal = auxNum;
+                    cal = (new Decimal(valNumber) * new Decimal(valNumberAux));
+                    result.innerText = Number(cal.toFixed(2));
+                    cal = Number(cal.toFixed(2));
                 }
-                result.innerText = cal;
                 break;
             case '+':
                 if(valNumber - Math.floor(valNumber) == 0){
@@ -159,7 +161,6 @@ function operar() {
                     cal = (parseFloat(valNumber) - parseFLoat(valNumberAux));
                     result.innerText = cal;
                 }
-               
                 break;
         }
         ++auxHistorial;
@@ -184,7 +185,6 @@ function createHistorial(calculo){
     if(Number.isInteger(calculo)){
         p.innerText = `${valNumber} ${valOpera} ${valNumberAux}: ${calculo}`;
     }else{
-        calculo.toFixed(2);
         p.innerText = `${valNumber} ${valOpera} ${valNumberAux}: ${calculo}`
     }
     
