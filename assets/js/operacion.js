@@ -64,15 +64,26 @@ for (var i = 0; i < divNumb.length; i++) {
     divNumb[i].addEventListener("click", function () {
         let h = this.firstChild.innerHTML;
         if (valOpera == "") {
-            if (valNumber == 0 && valNumber != "0.") {
-                valNumber = h;
-            } else {
-                valNumber += h;
+            if(valNumber === "0."){
+                valNumber += h; 
+                result.innerText = valNumber;
+                return true;
             }
-            if(valNumber == "0."){
-                valNumber += h;
+            if(valNumber === 0 && valNumber != "0."){
+                valNumber += h; 
+                result.innerText = valNumber;
+                return true;
             }
-            result.innerText = valNumber;
+            if(valNumber == 0){
+                valNumber = h; 
+                result.innerText = valNumber;
+                return true;
+            }
+            if(valNumber > 0){
+                valNumber += h; 
+                result.innerText = valNumber;
+                return true;
+            }
         } else {
             if (valNumberAux == 0) {
                 valNumberAux = h;
