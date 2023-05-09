@@ -30,13 +30,34 @@ delet.onclick = function(){
         valNumber = 0;
         cal = 0;
     }
+    if(newDelet.length == 2 && newDelet.includes("-")){
+        result.innerText = 0;
+        valNumber = 0;
+        cal = 0;
+    }
 }
-// ,
+// 
+var conComa = 0;
 coma.onclick = function(){
-    valNumber += ".";
+    if(valNumber == 0 && valOpera == "" && valNumberAux == 0){
+        valNumber += ".";
+        conComa = valNumber;
+        result.innerHTML = valNumber;
+        return true;
+    }
+    if(valNumber != 0 && valNumberAux == 0 && valOpera == ""){
+        valNumber += ".";
+        result.innerHTML = `${valNumber}`;
+        return true;
+    }
+    if(valOpera != "" && valNumberAux != 0){
+        valNumberAux += ".";
+        result.innerHTML = `${valNumber} ${valOpera} ${valNumberAux}`;
+        return true;
+    }
 }
 
-//Recorrer la lista de elementos seleccionados
+//Recorrer la lista de numeros
 var valNumber = 0;
 var valNumberAux = 0;
 for (var i = 0; i < divNumb.length; i++) {
@@ -48,6 +69,9 @@ for (var i = 0; i < divNumb.length; i++) {
                 valNumber = h;
             } else {
                 valNumber += h;
+            }
+            if(conComa != 0){
+                valNumber = conComa + h;
             }
             result.innerText = valNumber;
         } else {
@@ -62,7 +86,7 @@ for (var i = 0; i < divNumb.length; i++) {
     });
 }
 
-// Recorrer la lista de elementos seleccionados
+// Recorrer la lista de operador
 var valOpera = "";
 for (var i = 0; i < divOpera.length; i++) {
     //Añades un evento a cada elemento
@@ -80,7 +104,6 @@ for (var i = 0; i < divOpera.length; i++) {
 
 // modificar %
 porcent.onclick = function(){
-    let h = this.firstChild.innerText;
     if(valOpera == "" && valNumber != 0){
         valNumber = valNumber / 100;
         result.innerText = `${valNumber}`;
@@ -88,7 +111,7 @@ porcent.onclick = function(){
     }
     if(valNumberAux != 0){
         valNumberAux = valNumberAux / 100;
-        result.innerText = `${valNumber} ${valOpera} ${valNumberAux}`;
+        result.innerText = `${valNumber} ${valOpera} ${valNumberAux.toFixed(2)}`;
         return true;
     }
 }
@@ -104,13 +127,14 @@ function operar() {
             case '/':
                 if(valNumber - Math.floor(valNumber) == 0){
                     cal = (Number(valNumber) / Number(valNumberAux));
+                    result.innerText = cal;
                 }else{
                     cal = (new Decimal(valNumber) / new Decimal(valNumberAux));
+                    result.innerText = cal.toFixed(2);
                 }
-                result.innerText = cal.toFixed(2);
                 break;
             case 'X':
-                if(Number.isInteger(valNumber)){
+                if(valNumber - Math.floor(valNumber) == 0){
                     cal = (Number(valNumber) * Number(valNumberAux));
                 }else{
                     let auxNum = (new Decimal(valNumber) * new Decimal(valNumberAux));
@@ -119,17 +143,23 @@ function operar() {
                 result.innerText = cal;
                 break;
             case '+':
-                if(Number.isInteger(valNumber)){
+                if(valNumber - Math.floor(valNumber) == 0){
                     cal = (Number(valNumber) + Number(valNumberAux));
+                    result.innerText = cal;
                 }else{
-                    let auxNum = (new Decimal(valNumber) * new Decimal(valNumberAux));
-                    cal = auxNum.toFixed(2);
+                    cal = (parseFloat(valNumber) + parseFloat(valNumberAux));
+                    result.innerText = cal;
                 }
-                result.innerText = cal;
                 break;
             case '-':
-                cal = (Number(valNumber) - Number(valNumberAux));
-                result.innerText = cal;
+                if(valNumber - Math.floor(valNumber) == 0){
+                    cal = (Number(valNumber) - Number(valNumberAux));
+                    result.innerText = cal;
+                }else{
+                    cal = (parseFloat(valNumber) - parseFLoat(valNumberAux));
+                    result.innerText = cal;
+                }
+               
                 break;
         }
         ++auxHistorial;
@@ -139,6 +169,10 @@ function operar() {
         valNumber = 0;
         valNumberAux = 0;
         valOpera = "";
+    }
+    if(valNumber != 0 && valOpera == "/" && valNumberAux == 0){
+        valOpera = "";
+        alert("No se puede dividir entre 0");
     }
 }
 
@@ -150,9 +184,9 @@ function createHistorial(calculo){
     if(Number.isInteger(calculo)){
         p.innerText = `${valNumber} ${valOpera} ${valNumberAux}: ${calculo}`;
     }else{
-        p.innerText = `${valNumber} ${valOpera} ${valNumberAux}: ${calculo.toFixed(2)}`
+        calculo.toFixed(2);
+        p.innerText = `${valNumber} ${valOpera} ${valNumberAux}: ${calculo}`
     }
-    
     
     div.appendChild(p);
     div.classList.add('historial-hijo');
